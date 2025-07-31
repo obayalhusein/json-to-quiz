@@ -1,0 +1,20 @@
+[
+  {
+    "q": "What is teamwork?",
+    "a": [
+      { "option": "Collaboration of individuals to achieve a common goal.", "correct": true },
+      { "option": "Working alone to complete tasks.", "correct": false },
+      { "option": "Interacting with the audience.", "correct": false },
+      { "option": "Setting time for rest.", "correct": false }
+    ]
+  },
+  {
+    "q": "Which of the following is a benefit of good communication?",
+    "a": [
+      { "option": "More misunderstandings.", "correct": false },
+      { "option": "Improved teamwork and collaboration.", "correct": true },
+      { "option": "Increased conflicts.", "correct": false },
+      { "option": "Decreased productivity.", "correct": false }
+    ]
+  }
+]
