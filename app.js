@@ -10,21 +10,25 @@ document.getElementById('jsonFile').addEventListener('change', function (event) 
         try {
             questions = JSON.parse(e.target.result);
             currentIndex = 0;
-            showQuestion(); // Change this 
+            showQuestion(); // Change this if you want to customize display
         } catch (err) {
-            alert("خطأ في ملف JSON");
+            alert("Error in JSON file");
         }
     };
     reader.readAsText(file);
 });
 
-/* remove the code bellow this line if you wanna make it dynamic */
+/* remove the code below this line if you want to make it dynamic */
 function showQuestion() {
+    const hideOnUpload = document.getElementById('hide-on-upload');
+    if (hideOnUpload) {
+        hideOnUpload.style.display = 'none';
+    }
     const container = document.getElementById('quizContainer');
     container.innerHTML = '';
 
     if (currentIndex >= questions.length) {
-        container.innerHTML = `<div class="alert alert-success text-center">انتهى الاختبار 🎉</div>`;
+        container.innerHTML = `<div class="alert alert-success text-center">Quiz Completed 🎉</div>`;
         return;
     }
 
@@ -37,12 +41,12 @@ function showQuestion() {
 
     const questionTitle = document.createElement('h5');
     questionTitle.className = 'card-title mb-3';
-    questionTitle.textContent = `السؤال ${currentIndex + 1}: ${q.q}`;
+    questionTitle.textContent = `Question ${currentIndex + 1}: ${q.q}`;
     cardBody.appendChild(questionTitle);
 
     q.a.forEach((answer, index) => {
         const btn = document.createElement('button');
-        btn.className = 'btn btn-outline-primary d-block w-100 text-start mb-2';
+        btn.className = 'btn btn-outline-primary d-block w-100 text-end mb-2';
         btn.textContent = answer.option;
         btn.onclick = () => handleAnswer(btn, answer.correct);
         cardBody.appendChild(btn);
@@ -63,7 +67,7 @@ function handleAnswer(button, isCorrect) {
         button.classList.remove('btn-outline-primary');
         button.classList.add('btn-danger');
 
-        // Highlight correct answer
+        // Highlight the correct answer
         const answers = questions[currentIndex].a;
         answers.forEach((a, idx) => {
             if (a.correct) {
@@ -77,7 +81,7 @@ function handleAnswer(button, isCorrect) {
     // Next question button
     const nextBtn = document.createElement('button');
     nextBtn.className = 'btn btn-secondary mt-3';
-    nextBtn.textContent = 'السؤال التالي';
+    nextBtn.textContent = 'Next Question';
     nextBtn.onclick = () => {
         currentIndex++;
         showQuestion();

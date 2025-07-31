@@ -9,14 +9,45 @@
 <body class="bg-light p-4">
 
   <div class="container" style="max-width: 700px">
-    <h1>Convert JSON to Quiz</h1>
+    <div id="hide-on-upload">
+        <h1>Convert JSON to Quiz</h1>
+    
+        <a href="/example.json" download class="btn btn-link mb-3">example.json</a>
+    
+        <!-- JSON file uploader -->
+        <div class="mb-3">
+            <label for="jsonFile" class="form-label">Your quiz file</label>
+            <input class="form-control" type="file" id="jsonFile" accept=".json" />
+        </div>
 
-    <a href="/example.json" download class="btn btn-link mb-3">example.json</a>
-
-    <!-- JSON file uploader -->
-    <div class="mb-3">
-      <label for="jsonFile" class="form-label">Your quiz file</label>
-      <input class="form-control" type="file" id="jsonFile" accept=".json" />
+        <div class="card py-3">
+            <div class="px-3">
+                Convert these questions and answers to a downloadable json file:
+            </div>
+            <pre>
+                ```
+                [
+                    {
+                        "q": "What is the capital of France?",
+                        "a": [
+                            {"option": "Berlin", "correct": false},
+                            {"option": "Madrid", "correct": false},
+                            {"option": "Paris", "correct": true},
+                            {"option": "Rome", "correct": false}
+                        ]
+                    },
+                    {
+                        "q": "What is 2 + 2?",
+                        "a": [
+                            {"option": "3", "correct": false},
+                            {"option": "4", "correct": true},
+                            {"option": "5", "correct": false}
+                        ]
+                    }
+                ]
+                ```
+            </pre>
+        </div>
     </div>
 
     <div id="quizContainer" class="mt-4"></div>
